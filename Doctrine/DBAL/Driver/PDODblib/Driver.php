@@ -21,6 +21,10 @@
 
 namespace Lsw\DoctrinePdoDblib\Doctrine\DBAL\Driver\PDODblib;
 
+use Doctrine\DBAL\Driver\API\ExceptionConverter as ExceptionConverterInterface;
+use Doctrine\DBAL\Driver\API\IBMDB2\ExceptionConverter;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+
 /**
  * The PDO-based Dblib driver.
  *
@@ -101,5 +105,10 @@ class Driver implements \Doctrine\DBAL\Driver {
     public function getDatabase(\Doctrine\DBAL\Connection $conn) {
         $params = $conn->getParams();
         return $params['dbname'];
+    }
+
+    public function getExceptionConverter(): ExceptionConverterInterface
+    {
+        return new ExceptionConverter();
     }
 }

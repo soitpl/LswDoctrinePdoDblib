@@ -67,7 +67,7 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
     /**
      * {@inheritdoc}
      */
-    public function rollback() {
+    public function rollback() :bool{
         if ($this->_pdoTransactionsSupported() === true) {
             parent::rollback();
         } else {
@@ -78,7 +78,7 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
     /**
      * {@inheritdoc}
      */
-    public function commit() {
+    public function commit() :bool {
         if ($this->_pdoTransactionsSupported() === true) {
             parent::commit();
         } else {
@@ -89,7 +89,7 @@ class Connection extends \Doctrine\DBAL\Driver\PDOConnection implements \Doctrin
     /**
      * {@inheritdoc}
      */
-    public function beginTransaction() {
+    public function beginTransaction() :bool {
         if ($this->_pdoTransactionsSupported() === true) {
             parent::beginTransaction();
         } else {
